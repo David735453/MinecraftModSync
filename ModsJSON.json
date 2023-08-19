@@ -3,6 +3,10 @@
     "loader": "fabric",
     "modsList": [
         {
+            "Mod_Name": "Fabric API",
+            "Project_ID": "P7dR8mSH"
+        },
+        {
             "Mod_Name": "Sodium",
             "Project_ID": "AANobbMI"
         },
