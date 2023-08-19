@@ -62,7 +62,7 @@ In this case it becomes very easy to manually keep track of required mods.
 
 ## Contributions
 
-Contributions are welcome! Feel free to open issues or pull requests for improvements or bug fixes.
+Suggestions / Contributions are welcome! Feel free to open issues or pull requests for improvements or bug fixes.
 
 ## License
 
