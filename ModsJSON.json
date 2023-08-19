@@ -1,0 +1,10 @@
+{
+    "gameVersion": "1.20.1",
+    "loader": "fabric",
+    "modsList": [
+        {
+            "Mod_Name": "Sodium",
+            "Project_ID": "AANobbMI"
+        }
+    ]
+}
