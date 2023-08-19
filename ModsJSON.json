@@ -5,6 +5,16 @@
         {
             "Mod_Name": "Sodium",
             "Project_ID": "AANobbMI"
+        },
+        {
+            "Mod_Name": "Lithium",
+            "Project_ID": "gvQqBUqZ"
         }
+        //Add more mods as required. Do not forget to add "," after every "}" when adding a new mods to list.
+        // Use below structure
+        // {
+        //     "Mod_Name": <name>,
+        //     "Project_ID": <id>"
+        // }
     ]
 }
