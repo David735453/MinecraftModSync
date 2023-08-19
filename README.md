@@ -23,25 +23,26 @@ This command-line tool uses a custom JSON configuration to determine the game ve
             "Project_ID": <id>
         }
 
-Here is the sample attached
+   Here is the sample attached
+   
+       ```json
+       {
+           "gameVersion": "1.20.1",
+           "loader": "fabric",
+           "modsList": [
+               {
+                   "Mod_Name": "Sodium",
+                   "Project_ID": "AANobbMI"
+               },
+               {
+                   "Mod_Name": "Lithium",
+                   "Project_ID": "gvQqBUqZ"
+               }
+           ]
+       }
+       ```
 
-    ```json
-    {
-        "gameVersion": "1.20.1",
-        "loader": "fabric",
-        "modsList": [
-            {
-                "Mod_Name": "Sodium",
-                "Project_ID": "AANobbMI"
-            },
-            {
-                "Mod_Name": "Lithium",
-                "Project_ID": "gvQqBUqZ"
-            }
-        ]
-    }
-    ```
-    <br>
+   <br>
     
 
 3. Run the tool with the configuration file as an argument:
