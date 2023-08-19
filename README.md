@@ -25,7 +25,7 @@ This command-line tool uses a custom JSON configuration to determine the game ve
 
    Here is the sample attached
    
-       ```json
+   ```json
        {
            "gameVersion": "1.20.1",
            "loader": "fabric",
@@ -40,7 +40,7 @@ This command-line tool uses a custom JSON configuration to determine the game ve
                }
            ]
        }
-       ```
+   ```
 
    <br>
     
