@@ -78,9 +78,9 @@ In this case it becomes very easy to manually keep track of required mods.
 
 ## Wondering how lazy am I? Uhmm... this Lazy
 
-    ```js
-        let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge for curseforge API.
-    ```
+ ```javascript
+ let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge for curseforge API.
+ ```
 
 
 ## Contributions
