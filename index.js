@@ -14,36 +14,36 @@ let loaderType = (loader == 'fabric') ? 4 : 1;
 
 fs.mkdirSync('mods', { recursive: true }); // create mods folder at current file path
 
-// ModsJSON.modsList_Modrinth.map((mod) => {
+ModsJSON.modsList_Modrinth.map((mod) => {
 
-//     axios.get(`https://api.modrinth.com/v2/project/${mod.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`)
-//         .then(res => {
-//             let fileName = res.data[0].files[0].filename;
-//             let fileURL = res.data[0].files[0].url;
+    axios.get(`https://api.modrinth.com/v2/project/${mod.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`)
+        .then(res => {
+            let fileName = res.data[0].files[0].filename;
+            let fileURL = res.data[0].files[0].url;
 
-//             axios({
-//                 method: 'get',
-//                 url: fileURL,
-//                 responseType: 'stream'
-//             })
-//                 .then(response => {
-//                     const writer = fs.createWriteStream(`mods/${fileName}`); // Downloaded mod jars will be saved in mods folder 
-//                     response.data.pipe(writer);
+            axios({
+                method: 'get',
+                url: fileURL,
+                responseType: 'stream'
+            })
+                .then(response => {
+                    const writer = fs.createWriteStream(`mods/${fileName}`); // Downloaded mod jars will be saved in mods folder 
+                    response.data.pipe(writer);
 
-//                     writer.on('finish', () => {
-//                         console.log(`${fileName} download and save completed.`);
-//                     });
+                    writer.on('finish', () => {
+                        console.log(`${fileName} download and save completed.`);
+                    });
 
-//                     writer.on('error', err => {
-//                         console.error('Error writing file:', err);
-//                     });
-//                 })
-//                 .catch(error => {
-//                     console.error('Error downloading file:', error);
-//                 });
-//         })
-//         .catch(err => console.log(err));
-// });
+                    writer.on('error', err => {
+                        console.error('Error writing file:', err);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error downloading file:', error);
+                });
+        })
+        .catch(err => console.log(err));
+});
 
 
 ModsJSON.modsList_CurseForge.map((mod) => {
