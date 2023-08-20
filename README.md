@@ -1,4 +1,4 @@
-# ModrinthModSync
+# MinecraftModSync
 
 Are you irritated of prompts every-now-and-then that ask you to update XYZ mod when you launch minecraft?? <br>
 <b>Oh yeah, me too.</b> <br>
