@@ -1,7 +1,7 @@
 {
     "gameVersion": "1.20.1",
     "loader": "fabric",
-    "modsList": [
+    "modsList_Modrinth": [
         {
             "Mod_Name": "Fabric API",
             "Project_ID": "P7dR8mSH"
@@ -13,6 +13,12 @@
         {
             "Mod_Name": "Lithium",
             "Project_ID": "gvQqBUqZ"
+        }
+    ],
+    "modsList_CurseForge": [
+        {
+            "Mod_Name": "Litematica",
+            "Project_ID": "308892"
         }
     ]
 }
