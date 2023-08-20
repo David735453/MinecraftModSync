@@ -76,6 +76,12 @@ Ahhh.. coz I am Lazy & didn't want to implement a complex mod manager like syste
 This is for those who use only a specifc set of mods and don't need to change it often.<br>
 In this case it becomes very easy to manually keep track of required mods.
 
+## Wondering how lazy am I? Uhmm... this Lazy
+
+    ```js
+        let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge for curseforge API.
+    ```
+
 
 ## Contributions
 

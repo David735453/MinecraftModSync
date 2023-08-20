@@ -8,9 +8,9 @@ const filePath = 'ModsConfig.json';
 const jsonFile = fs.readFileSync(filePath, 'utf8');
 const ModsJSON = JSON.parse(jsonFile);
 
-let gameVersion = ModsJSON.gameVersion;
+let gameVersion = ModsJSON.gameVersion; r
 let loader = ModsJSON.loader;
-let loaderType = (loader == 'fabric') ? 4 : 1;
+let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge
 
 fs.mkdirSync('mods', { recursive: true }); // create mods folder at current file path
 
