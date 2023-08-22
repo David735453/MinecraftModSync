@@ -82,6 +82,13 @@ In this case it becomes very easy to manually keep track of required mods.
  let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge for curseforge API.
  ```
 
+## For the nerds out you there 
+get follows response from network tab for modrinth followed mods
+Then use below code to get the array list to avoid manually configuring the list
+   ```javascript
+      res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
+   ```
+
 
 ## Contributions
 
