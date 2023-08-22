@@ -86,7 +86,7 @@ In this case it becomes very easy to manually keep track of required mods.
 get follows response from network tab for modrinth followed mods
 Then use below code to get the array list to avoid manually configuring the list
    ```javascript
-      res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
+   res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
    ```
 
 
