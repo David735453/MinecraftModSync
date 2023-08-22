@@ -57,16 +57,16 @@ This command-line tool uses a custom JSON configuration to determine the game ve
     
 
 3. CurseForge required API KEY. Create a .env file to define your API KEY. 
-    ```
-    CF_API_KEY=<api-key>
-    ```
+ ```
+ CF_API_KEY=<api-key>
+ ```
 
 
 4. Run the tool with the configuration file as an argument:
-   ```bash
-   node index.js
-   ```
-   <br>
+```bash
+node index.js
+```
+<br>
 
 5. The tool will download the latest mod versions specified in the <b>ModsConfig.json</b>.<br><br>
 
@@ -83,12 +83,15 @@ In this case it becomes very easy to manually keep track of required mods.
  ```
 
 ## For the nerds out you there 
+
 get follows response from network tab for modrinth followed mods
 Then use below code to get the array list to avoid manually configuring the list
-   ```javascript
-   res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
-   ```
+```javascript
+res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
+```
 
+<br>Image for Reference <br><br>
+![](https://i.ibb.co/vVDfpQx/Follows-Modrinth.jpg)
 
 ## Contributions
 
