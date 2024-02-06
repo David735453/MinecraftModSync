@@ -155,6 +155,7 @@ In this case it becomes very easy to manually keep track of required mods.
 
 </del>
 
+
 ### Still Lazy enough to not implement: 
 - **Other loaders for curseforge**  
 
@@ -171,6 +172,17 @@ In this case it becomes very easy to manually keep track of required mods.
 
 <br/>
 
+## For the nerds out you there 
+
+get follows response from network tab for modrinth followed mods
+Then use below code to get the array list to avoid manually configuring the list
+```javascript
+res = follows.filter(o => o.project_type === "mod").map(({ id, slug }) => ({ "Mod_Name": slug, "Project_ID": id }));
+```
+
+<br>Image for Reference <br><br>
+
+![](https://i.ibb.co/vVDfpQx/Follows-Modrinth.jpg)
 
 ## Contributions
 
