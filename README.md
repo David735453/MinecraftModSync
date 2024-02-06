@@ -1,14 +1,78 @@
-# MinecraftModSync
+# **MinecraftModSync**
 
 Are you irritated of prompts every-now-and-then that ask you to update XYZ mod when you launch minecraft?? <br>
-<b>Oh yeah, me too.</b> <br>
+<b>Oh yeah, me too.</b> 
+<br>
 So I wrote this simple node program that does the job for you. It will download the latest mods in one click.
 
-## 
-Easily download the latest mods from <b>Modrinth & CurseForge</b> for specified game version and loader (in my case, fabric).<br>
-This command-line tool uses a custom JSON configuration to determine the game version, loader, and mods to download.
-
 ##
+
+Easily download the latest mods from <b>Modrinth & CurseForge</b> for specified game version and loader (in my case, fabric).<br/>
+
+<br/>
+
+## **New Features and Updates**
+
+### Support for **Modrinth Collections** is finally here
+
+- **Say goodbye to manual list updates!**
+
+
+
+### With Modrinth adding collections ( & making life easier), 
+- you only need to maintain the public collection from where you want to download the mods 
+- no hassle of manually updating the mods list in config file
+
+<br/>
+
+### Changes to ModsConfig.json file
+- #### Addition of two new fields
+ 
+
+    ```json
+    "modrinthUserId": "<instert your user id here>",
+    "modrinthCollectionId": "<insert (public) collection id here>",
+    ```
+
+<br/>
+
+### Added NPM scripts 
+
+- #### So you feel you're a wizard when you:
+
+    ```
+    npm run download
+
+    hope you guessed it, it downloads the mods
+
+        - if public collection defined in config && collection valid
+            - downloads the mods in the public collection
+        - else
+            - if user id defined in config && valid api key in .env       
+                - downloads the mods in the followed projects
+        
+        rest all cases, may the node be with you
+    ```
+
+- #### You feel its a chore adding the followed projects (private) to the public collection
+    ```
+    npm run update
+
+        [requires api key]
+        updates your public collection from your followed projects (private collection) 
+    ```
+
+- #### You feel like the modern way isn't for you and you want to live the old life:
+    ```
+    npm run list
+
+        - it lists down the mods in the same format as requied in config file so you can download mods via legacy way
+
+    npm run legacy
+        - for backwards compatibility
+    ```
+
+<br/>
 
 ## Usage
 
@@ -16,13 +80,15 @@ This command-line tool uses a custom JSON configuration to determine the game ve
    <ul><li>It defines game version, loader and list of mods.</li>
    <li><b>Mod_Name</b> is just a place holder and can be named anything you want.</li>
    <li><b>Project_ID</b> must be correct. Visit Modrinth to get the project id of the mod.</li></ul><br>
-
-        Add more mods as required. Do not forget to add "," after every "}" when adding a new mods to list.
-        Use below json structure
-        {
-             "Mod_Name": <name>,
-            "Project_ID": <id>
-        }
+    
+    ```
+    Add more mods as required. Do not forget to add "," after every "}" when adding a new mods to list.
+    Use below json structure
+    {
+        "Mod_Name": <name>,
+        "Project_ID": <id>
+    }
+    ```
 
    Here is the sample attached - Seprate list maintained for modrinth and Curseforge mods. 
    
@@ -51,25 +117,34 @@ This command-line tool uses a custom JSON configuration to determine the game ve
             }
         ]
     }
-   ```
+    ```
 
    <br>
     
+2. Create a .env file to define your API KEYS. 
+- CurseForge and Modrinth required API KEY. 
+- Modrinth requires api key only for followed mods- if you have public collection, feel free to skip 
 
-3. CurseForge required API KEY. Create a .env file to define your API KEY. 
     ```
     CF_API_KEY=<api-key>
+    MODRINTH_API_KEY=<api-key>
     ```
 
 
-4. Run the tool with the configuration file as an argument:
-   ```bash
-   node index.js
+3. Run the tool with the configuration file as an argument:
    ```
+   npm run <script_name>
+   ```
+
    <br>
 
-5. The tool will download the latest mod versions specified in the <b>ModsConfig.json</b>.<br><br>
+4. The tool will download the latest mod <s>specified in the <b>ModsConfig.json</b>.</s> directly from your modrinth collection / followed mods.
+<br>
+<br>
 
+##  No longer need to define manually
+
+<del>
 
 ## Why it needs to be defined Manually?
 Ahhh.. coz I am Lazy & didn't want to implement a complex mod manager like system.<br>
@@ -78,9 +153,23 @@ In this case it becomes very easy to manually keep track of required mods.
 
 ## Wondering how lazy am I? Uhmm... this Lazy
 
- ```javascript
- let loaderType = (loader == 'fabric') ? 4 : 1; // Yes I am lazy... only supports either fabric or forge for curseforge API.
- ```
+</del>
+
+### Still Lazy enough to not implement: 
+- **Other loaders for curseforge**  
+
+    - Curseforge is kinda dead now, majority have moved to modrinth
+     
+        ```js
+        let loaderType = (loader === 'fabric') ? 4 : 1;
+        ```
+
+- **Limited Error Handling** 
+    - to avoid over complications in code
+    - avoid crazy development time
+    - This is supposed to be a simple quick hack program for downloading mods in 1 command 
+
+<br/>
 
 
 ## Contributions
@@ -89,7 +178,7 @@ Suggestions / Contributions are welcome! Feel free to open issues or pull reques
 
 ## License
 
-This project is licensed under the <b>GNU General Public License v3.0.<b>
+This project is licensed under the <b>MIT<b>
 
 ## Acknowledgments
 

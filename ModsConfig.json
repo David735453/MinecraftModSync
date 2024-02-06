@@ -1,6 +1,8 @@
 {
     "gameVersion": "1.20.1",
     "loader": "fabric",
+    "modrinthUserId": "",
+    "modrinthCollectionId": "",
     "modsList_Modrinth": [
         {
             "Mod_Name": "Fabric API",
