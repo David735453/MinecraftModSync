@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 require('dotenv').config();
-const ModsConfig = require('./ModsConfig.json');
+const ModsConfig = require('../ModsConfig.json');
 const { getFollowedProjectsModrinth, getCollectionProjects } = require('./getProjectsList');
 
 /**

@@ -1,0 +1,46 @@
+{
+  "gameVersion": "1.20.4",
+  "loader": "fabric",
+  "modrinthUserId": "<instert your user id here>",
+  "modrinthCollectionId": "<insert (public) collection id here>",
+  "modsList_Modrinth": [
+    {
+      "Mod_Name": "Fabric API",
+      "Project_ID": "P7dR8mSH"
+    },
+    {
+      "Mod_Name": "Sodium",
+      "Project_ID": "AANobbMI"
+    },
+    {
+      "Mod_Name": "Lithium",
+      "Project_ID": "gvQqBUqZ"
+    }
+  ],
+  "modsList_CurseForge": [
+    {
+      "Mod_Name": "Litematica",
+      "Project_ID": "308892"
+    },
+    {
+      "Mod_Name": "Tweakeroo",
+      "Project_ID": "297344"
+    },
+    {
+      "Mod_Name": "MaLiLib",
+      "Project_ID": "303119"
+    },
+    {
+      "Mod_Name": "MiniHUD",
+      "Project_ID": "244260"
+    },
+    {
+      "Mod_Name": "Item Scroller",
+      "Project_ID": "242064"
+    },
+    {
+      "Mod_Name": "WorldEdit",
+      "Project_ID": "225608"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 require('dotenv').config();
-const ConfigJSON = require('./ModsConfig.json');
+const ConfigJSON = require('../ModsConfig.json');
 
 /**
  * Legacy Mod Downloader 
