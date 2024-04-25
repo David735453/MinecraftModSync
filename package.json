@@ -1,13 +1,14 @@
 {
-  "name": "modrinthmodsync",
-  "version": "2.0.0",
+  "name": "minecraftmodsync",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "list": "node getProjectsList.js",
-    "update": "node update-collection.js",
-    "download": "node download.js",
-    "legacy": "node mod-downloader-legacy.js"
+    "list": "node scripts/getProjectsList.js",
+    "update": "node scripts/update-collection.js",
+    "download": "node scripts/download.js",
+    "legacy": "node scripts/mod-downloader-legacy.js",
+    "check": "node scripts/check-mods.js"
   },
   "author": "",
   "license": "MIT",
