@@ -44,7 +44,7 @@ const downloadModrinth = async () => {
             console.error('Error downloading file:', error);
           });
       })
-      .catch(err => console.log(`err with mod -> ${project.Mod_Name}`));
+      .catch(err => console.log(`${project.Mod_Name} -> Not Available (or Unknown error)`));
   });
 };
 
@@ -93,7 +93,7 @@ const downloadCF = () => {
             console.error('Error downloading file:', error);
           });
       })
-      .catch(err => console.log(`err with mod -> ${mod.Mod_Name}`));
+      .catch(err => console.log(`${mod.Mod_Name} Not Available. (or Unknown error)`));
   });
 };
 
