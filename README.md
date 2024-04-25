@@ -1,6 +1,7 @@
 # **MinecraftModSync**
 
-Are you irritated of prompts every-now-and-then that ask you to update XYZ mod when you launch minecraft?? <br>
+Are you irritated of prompts every-now-and-then that ask you to update XYZ mod when you launch minecraft?? 
+<br>
 <b>Oh yeah, me too.</b> 
 <br>
 So I wrote this simple node program that does the job for you. It will download the latest mods in one click.
@@ -34,42 +35,57 @@ Easily download the latest mods from <b>Modrinth & CurseForge</b> for specified 
     "modrinthCollectionId": "<insert (public) collection id here>",
     ```
 
+- #### Note:
+  - After adding <b>userId & CollectionId rename</b> `ModsConfig_example.json` to `ModsConfig.json`
+
 <br/>
 
 ### Added NPM scripts 
 
 - #### So you feel you're a wizard when you:
 
-    ```
-    npm run download
+    `npm run download`
 
+    ```
     hope you guessed it, it downloads the mods
 
-        - if public collection defined in config && collection valid
-            - downloads the mods in the public collection
-        - else
-            - if user id defined in config && valid api key in .env       
-                - downloads the mods in the followed projects
-        
-        rest all cases, may the node be with you
+    - if public collection defined in config && collection valid
+        - downloads the mods in the public collection
+    - else
+        - if user id defined in config && valid api key in .env       
+            - downloads the mods in the followed projects
+    
+    rest all cases, may the node be with you
+    ```
+
+    `npm run check`
+
+    ```
+    - Lists down the available and not available mods for the game version defined in ModsConfig
+
+    - Some mods might take quite some time to get updated to latest version of MC
+
+        - helpful if you just want to "check" which mods are available & not available when a new version is dropped eg 1.20.5, 1.21 etc
     ```
 
 - #### You feel its a chore adding the followed projects (private) to the public collection
-    ```
-    npm run update
 
-        [requires api key]
-        updates your public collection from your followed projects (private collection) 
+    `npm run update`
+
+    ```
+    [requires api key]
+    updates your public collection from your followed projects (private collection) 
     ```
 
 - #### You feel like the modern way isn't for you and you want to live the old life:
+    `npm run list` 
+
     ```
-    npm run list
-
-        - it lists down the mods in the same format as requied in config file so you can download mods via legacy way
-
-    npm run legacy
-        - for backwards compatibility
+    - it lists down the mods in the same format as requied in config file so you can download mods via legacy way
+    ```
+    `npm run legacy`
+    ```
+    - for backwards compatibility
     ```
 
 <br/>
