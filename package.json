@@ -1,6 +1,6 @@
 {
   "name": "minecraftmodsync",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "legacy": "node scripts/mod-downloader-legacy.js",
     "check": "node scripts/check-mods.js"
   },
-  "author": "",
+  "author": "Yasin Bhimani",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.4.0",

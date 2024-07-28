@@ -2,7 +2,10 @@
   "gameVersion": "1.20.4",
   "loader": "fabric",
   "modrinthUserId": "<instert your user id here>",
-  "modrinthCollectionId": "<insert (public) collection id here>",
+  "modrinthCollectionId": {
+    "client": "<insert Client-side mods collection ID>",
+    "server": "<insert Server-side mods collection ID>"
+  },
   "modsList_Modrinth": [
     {
       "Mod_Name": "Fabric API",

@@ -16,7 +16,7 @@ const updatePublicCollection = async () => {
   const config = { headers: { 'authorization': process.env.MODRINTH_API_KEY } };
 
   try {
-    const res = await axios.patch(`https://api.modrinth.com/v3/collection/${modrinthCollectionId}`,
+    const res = await axios.patch(`https://api.modrinth.com/v3/collection/${modrinthCollectionId.client}`,
       { "new_projects": projectIdList }, config);
     console.log(res.status);
     console.log("Success");

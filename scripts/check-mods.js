@@ -11,7 +11,7 @@ const checkMods = async () => {
   let modsNotAvailable = [];
   const { gameVersion, loader, modrinthCollectionId } = ModsConfig;
 
-  const projectList = modrinthCollectionId !== '' ? await getCollectionProjects() : await getFollowedProjectsModrinth();
+  const projectList = modrinthCollectionId ? await getCollectionProjects("client") : await getFollowedProjectsModrinth();
 
   const allPromises = projectList?.map(project => {
     return axios.get(`https://api.modrinth.com/v2/project/${project.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`)
@@ -28,14 +28,12 @@ const checkMods = async () => {
   });
 
   Promise.all(allPromises).then(() => {
-    console.log(`Mods available for ${gameVersion}`);
-    console.log(modsAvailable);
+    console.log(`${modsAvailable.length} Mods available for ${gameVersion}`);
+    console.log(modsAvailable.toSorted());
 
-    console.log(`Mods not available for ${gameVersion}`);
-    console.log(modsNotAvailable);
+    console.log(`${modsNotAvailable.length} Mods not available for ${gameVersion}`);
+    console.log(modsNotAvailable.toSorted());
   });
-
-
 };
 
 checkMods();

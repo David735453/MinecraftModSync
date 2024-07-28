@@ -38,11 +38,11 @@ const getFollowedProjectsModrinth = async () => {
  * 
  * To get the data like slug, it makes another api call
  */
-const getCollectionProjects = async () => {
+const getCollectionProjects = async (environment) => {
   let res;
 
   try {
-    res = await axios.get(`https://api.modrinth.com/v3/collection/${ModsConfig.modrinthCollectionId}`);
+    res = await axios.get(`https://api.modrinth.com/v3/collection/${ModsConfig.modrinthCollectionId?.[environment]}`);
   } catch (e) {
     console.error("Verify modrinth Collection ID");
     return;
