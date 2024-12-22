@@ -6,3 +6,5 @@ node_modules
 
 # other folders and files
 mods
+mods/server
+mods/client
