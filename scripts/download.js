@@ -5,6 +5,12 @@ const ModsConfig = require('../ModsConfig.json');
 const { getFollowedProjectsModrinth, getCollectionProjects } = require('./getProjectsList');
 const { downloadMod } = require('./downloadMod');
 
+// Delete the 'mods' folder if it exists
+if (fs.existsSync('mods')) {
+  fs.rmSync('mods', { recursive: true, force: true });
+}
+console.log('Deleted the mods folder');
+
 /**
  * As Modrinth have introduced public collections   
  * There is no need to manually update configs file
