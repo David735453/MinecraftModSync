@@ -1,29 +1,37 @@
-const axios = require('axios');
-const fs = require('fs');
 require('dotenv').config();
-const ModsConfig = require('../ModsConfig.json');
-const { getFollowedProjectsModrinth, getCollectionProjects } = require('./getProjectsList');
 
+const axios = require('axios');
+
+const ModsConfig = require('../ModsConfig.json');
+const { MODRINTH_BASE_URL_V2 } = require('../constants/constants');
+const {
+  getFollowedProjectsModrinth,
+  getCollectionProjects,
+} = require('./getProjectsList');
 
 const checkMods = async () => {
-
   let modsAvailable = [];
   let modsNotAvailable = [];
   const { gameVersion, loader, modrinthCollectionId } = ModsConfig;
 
-  const projectList = modrinthCollectionId ? await getCollectionProjects("client") : await getFollowedProjectsModrinth();
+  const projectList = modrinthCollectionId
+    ? await getCollectionProjects('client')
+    : await getFollowedProjectsModrinth();
 
-  const allPromises = projectList?.map(project => {
-    return axios.get(`https://api.modrinth.com/v2/project/${project.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`)
-      .then(res => {
+  const allPromises = projectList?.map((project) => {
+    return axios
+      .get(
+        `${MODRINTH_BASE_URL_V2}/project/${project.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`
+      )
+      .then((res) => {
+        // Hacky way to check existence; catches error if trying to read undefined.
         try {
           const fileName = res.data[0].files[0].filename;
           const fileURL = res.data[0].files[0].url;
           modsAvailable.push(project.Mod_Name);
-        }
-        catch (error) {
+        } catch (error) {
           modsNotAvailable.push(project.Mod_Name);
-        };
+        }
       });
   });
 
@@ -31,7 +39,9 @@ const checkMods = async () => {
     console.log(`${modsAvailable.length} Mods available for ${gameVersion}`);
     console.log(modsAvailable.toSorted());
 
-    console.log(`${modsNotAvailable.length} Mods not available for ${gameVersion}`);
+    console.log(
+      `${modsNotAvailable.length} Mods not available for ${gameVersion}`
+    );
     console.log(modsNotAvailable.toSorted());
   });
 };
