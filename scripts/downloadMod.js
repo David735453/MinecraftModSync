@@ -1,5 +1,5 @@
-const axios = require('axios');
 const fs = require('fs');
+const axios = require('axios');
 
 const downloadMod = async (fileName, fileURL, environment, config = {}) => {
   try {
@@ -15,7 +15,7 @@ const downloadMod = async (fileName, fileURL, environment, config = {}) => {
 
     return new Promise((resolve, reject) => {
       writer.on('finish', () => {
-        console.log(`${fileName} download and save completed.`);
+        console.log(`${fileName} download and save complete.`);
         resolve();
       });
       writer.on('error', (err) => {
