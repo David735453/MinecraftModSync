@@ -8,3 +8,4 @@ node_modules
 mods
 mods/server
 mods/client
+ModsConfig.json
