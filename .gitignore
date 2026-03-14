@@ -6,6 +6,5 @@ node_modules
 
 # other folders and files
 mods
-mods/server
-mods/client
+package-lock.json
 ModsConfig.json
