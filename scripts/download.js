@@ -41,21 +41,27 @@ const downloadModrinth = async (environment) => {
     ? await getCollectionProjects(environment)
     : await getFollowedProjectsModrinth();
 
-  for (const project of projectList) {
+  // Create download promises for parallel execution
+  const downloadPromises = projectList.map(async (project) => {
     try {
       const res = await axios.get(
-        `${MODRINTH_BASE_URL_V2}/project/${project.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]`
+        `${MODRINTH_BASE_URL_V2}/project/${project.Project_ID}/version?game_versions=["${gameVersion}"]&loaders=["${loader}"]&include_changelog=false`
       );
       const fileData = res.data[0].files[0];
       const { filename: fileName, url: fileURL } = fileData;
       await downloadMod(fileName, fileURL, environment);
+      return { success: true, project: project.Mod_Name };
     } catch (err) {
       console.log(
         `${RED}${project.Mod_Name} -> Not Available (Modrinth) (or Unknown error)${RESET}`
       );
       // console.error(err.message); // For debugging purposes
+      return { success: false, project: project.Mod_Name };
     }
-  }
+  });
+
+  // Execute all downloads in parallel
+  await Promise.allSettled(downloadPromises);
 
   const endTime = performance.now();
   const time = (endTime - startTime) / 1000;
@@ -78,7 +84,8 @@ const downloadCF = async (environment) => {
 
   const configCF = { headers: { 'x-api-key': process.env.CF_API_KEY } };
 
-  for (const mod of modsList_CF) {
+  // Create download promises for parallel execution
+  const downloadPromises = modsList_CF.map(async (mod) => {
     try {
       const res = await axios.get(
         `${CURSEFORGE_BASE_URL}/mods/${mod.Project_ID}/files?gameVersion=${gameVersion}&modLoaderType=${loaderType}`,
@@ -86,13 +93,18 @@ const downloadCF = async (environment) => {
       );
       const { fileName, downloadUrl: fileURL } = res.data.data[0];
       await downloadMod(fileName, fileURL, environment, configCF);
+      return { success: true, project: mod.Mod_Name };
     } catch (err) {
       console.log(
         `${RED}${mod.Mod_Name} Not Available (CF). (or Unknown error)${RESET}`
       );
       // console.error(err.message); // For debugging purposes
+      return { success: false, project: mod.Mod_Name };
     }
-  }
+  });
+
+  // Execute all downloads in parallel
+  await Promise.allSettled(downloadPromises);
 };
 
 if (!fs.existsSync('mods')) {
