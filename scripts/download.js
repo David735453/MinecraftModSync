@@ -37,9 +37,9 @@ const downloadModrinth = async (environment) => {
   const startTime = performance.now();
 
   const { gameVersion, loader, modrinthCollectionId } = ModsConfig;
-  const projectList = modrinthCollectionId?.[environment]
+  const projectList = (modrinthCollectionId?.[environment]
     ? await getCollectionProjects(environment)
-    : await getFollowedProjectsModrinth();
+    : await getFollowedProjectsModrinth()) ?? [];
 
   // Create download promises for parallel execution
   const downloadPromises = projectList.map(async (project) => {
@@ -119,6 +119,8 @@ if (!fs.existsSync('mods/server')) {
   fs.mkdirSync('mods/server', { recursive: true });
 }
 
-downloadModrinth('client');
-downloadModrinth('server');
-downloadCF('client');
+(async () => {
+  await downloadModrinth('client');
+  await downloadModrinth('server');
+  await downloadCF('client');
+})();

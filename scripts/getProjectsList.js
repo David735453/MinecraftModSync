@@ -55,18 +55,21 @@ const getCollectionProjects = async (environment) => {
       `${MODRINTH_BASE_URL_V3}/collection/${ModsConfig.modrinthCollectionId?.[environment]}`
     );
   } catch (e) {
-    // console.error(err.message); // For debugging purposes
-    console.error('Verify modrinth Collection ID');
-    return;
+    console.error(`Collection fetch failed: ${e.message}`);
+    return [];
   }
   const projects = res?.data?.projects;
   let collectionList = [];
 
   // Map over the projects array and create an array of promises
   const promises = projects.map(async (p) => {
-    const projectData = await axios.get(`${MODRINTH_BASE_URL_V2}/project/${p}`);
-    const { id, slug } = projectData?.data;
-    collectionList.push({ Mod_Name: slug, Project_ID: id });
+    try {
+      const projectData = await axios.get(`${MODRINTH_BASE_URL_V2}/project/${p}`);
+      const { id, slug } = projectData?.data;
+      collectionList.push({ Mod_Name: slug, Project_ID: id });
+    } catch {
+      console.error(`Failed to fetch project details for ${p}`);
+    }
   });
 
   // Wait for all promises to resolve

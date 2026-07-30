@@ -7,3 +7,5 @@ node_modules
 # other folders and files
 mods
 package-lock.json
+pnpm-lock.yaml
+yarn.lock
